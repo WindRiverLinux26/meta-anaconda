@@ -8,8 +8,7 @@ SRC_URI = "file://sidebar-logo.png \
            file://banner_yocto2.png \
            file://COPYING"
 
-S = "${WORKDIR}/sources"
-UNPACKDIR = "${S}"
+S = "${UNPACKDIR}"
 
 inherit allarch
 

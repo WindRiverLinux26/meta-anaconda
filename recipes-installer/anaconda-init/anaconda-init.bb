@@ -9,8 +9,7 @@ SRC_URI = "file://anaconda-init \
            file://Xusername \
            file://COPYING"
 
-S = "${WORKDIR}/sources"
-UNPACKDIR = "${S}"
+S = "${UNPACKDIR}"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
