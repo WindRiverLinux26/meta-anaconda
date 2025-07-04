@@ -29,6 +29,6 @@ IMAGE_LINGUAS = "en-us en-gb"
 IMAGE_FSTYPES:remove = "live wic wic.bmap"
 IMAGE_FSTYPES:append = " iso"
 
-IMAGE_ROOTFS_EXTRA_SPACE =" + 102400"
+IMAGE_ROOTFS_EXTRA_SPACE = " + 102400"
 
 inherit core-image anaconda_image
