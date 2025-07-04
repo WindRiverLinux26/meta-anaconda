@@ -75,8 +75,6 @@ SRC_URI = "git://github.com/rhinstaller/anaconda.git;protocol=https;branch=fedor
 
 SRCREV = "b42eeabf535c3cf61ca8fafee7c21a156e650c74"
 
-S = "${WORKDIR}/git"
-
 inherit autotools-brokensep features_check gettext gobject-introspection python3native pkgconfig
 REQUIRED_DISTRO_FEATURES = "opengl systemd wayland"
 

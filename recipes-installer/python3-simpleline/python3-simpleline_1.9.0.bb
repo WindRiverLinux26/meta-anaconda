@@ -8,6 +8,5 @@ LIC_FILES_CHKSUM = "file://LICENSE.md;md5=8350171b4e0d605dd7f117e75eb5b4cd"
 
 SRC_URI = "git://github.com/rhinstaller/python-simpleline;protocol=https;branch=main"
 SRCREV = "cf7a049623432acbdb8ec23eeadbfa666761e109"
-S = "${WORKDIR}/git"
 
 inherit setuptools3_legacy

@@ -10,6 +10,5 @@ SRC_URI = "git://github.com/release-engineering/productmd.git;protocol=https;bra
            file://add-wrlinux-version-pattern.patch \
            "
 SRCREV = "99182b4fea09408ad8a69f8fa39e1892e84f90b2"
-S = "${WORKDIR}/git"
 
 inherit setuptools3
