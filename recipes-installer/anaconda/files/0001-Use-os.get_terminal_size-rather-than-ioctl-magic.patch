@@ -1,0 +1,66 @@
+From 29c84caee412cc9f78fe7e55d418ca7f9d8eebb3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Miro=20Hron=C4=8Dok?= <miro@hroncok.cz>
+Date: Sat, 7 Jun 2025 20:28:03 +0200
+Subject: [PATCH] Use os.get_terminal_size rather than ioctl magic
+
+This is an alternate fix to https://github.com/rhinstaller/anaconda/pull/6447
+
+On Python 3.14+, the previous version raised SystemError:
+
+    >>> from pyanaconda.argument_parsing import get_help_width
+    ...
+    >>> get_help_width()
+    Traceback (most recent call last):
+      File "<python-input-1>", line 1, in <module>
+        get_help_width()
+        ~~~~~~~~~~~~~~^^
+      File "/usr/lib64/python3.14/site-packages/pyanaconda/argument_parsing.py", line 68, in get_help_width
+        data = fcntl.ioctl(sys.stdout, termios.TIOCGWINSZ, '1234')
+    SystemError: buffer overflow
+
+See https://github.com/python/cpython/commit/c2eaeee3dc3306ca486b0377b07b1a957584b691
+
+Fixes https://bugzilla.redhat.com/2370944
+
+Rather than the suggested shutil.get_terminal_size I use to lower-level
+function from os to support the original problem reporting.
+
+Upstream-Status: Backport [https://github.com/rhinstaller/anaconda/commit/29c84ca]
+
+Signed-off-by: Kai Kang <kai.kang@windriver.com>
+---
+ pyanaconda/argument_parsing.py | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
+
+diff --git a/pyanaconda/argument_parsing.py b/pyanaconda/argument_parsing.py
+index e24f0f1b99..28a91dd1ec 100644
+--- a/pyanaconda/argument_parsing.py
++++ b/pyanaconda/argument_parsing.py
+@@ -19,12 +19,8 @@
+ DESCRIPTION = "Anaconda is the installation program used by Fedora, " \
+               "Red Hat Enterprise Linux and some other distributions."
+ 
+-import fcntl
+ import itertools
+ import os
+-import struct
+-import sys
+-import termios
+ from argparse import (
+     SUPPRESS,
+     Action,
+@@ -65,9 +61,8 @@ def get_help_width():
+         return DEFAULT_HELP_WIDTH
+ 
+     try:
+-        data = fcntl.ioctl(sys.stdout, termios.TIOCGWINSZ, '1234')
+-        columns = int(struct.unpack('hh', data)[1])
+-    except (OSError, ValueError) as e:
++        columns = os.get_terminal_size().columns
++    except OSError as e:
+         log.info("Unable to determine terminal width: %s", e)
+         print("terminal size detection failed, using default width")
+         return DEFAULT_HELP_WIDTH
+-- 
+2.52.0.395.ge0bfec3dfc
+
