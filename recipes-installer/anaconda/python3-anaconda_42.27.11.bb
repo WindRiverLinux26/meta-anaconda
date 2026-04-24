@@ -72,6 +72,8 @@ SRC_URI = "git://github.com/rhinstaller/anaconda.git;protocol=https;branch=fedor
            file://0085-catch-all-exceptions-for-screensaver-inhibition.patch \
            file://0086-python3-anaconda-workaround-post-scripts-not-working.patch \
            file://0001-Use-os.get_terminal_size-rather-than-ioctl-magic.patch \
+           file://0002-Do-not-catch-blivet.safe_dbus-exceptions-in-iSCSI-mo.patch \
+           file://0003-Catch-blivet.errors.ISCSIError-in-ISCSIDiscoverTask.patch \
            "
 
 SRCREV = "b42eeabf535c3cf61ca8fafee7c21a156e650c74"
