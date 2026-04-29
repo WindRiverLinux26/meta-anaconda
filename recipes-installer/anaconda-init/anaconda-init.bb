@@ -17,7 +17,7 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 #RDEPENDS_${PN} = "networkmanager-tests"
 
 # For mount -oloop=/dev/loopX, busybox's mount doesn't support this.
-RDEPENDS:${PN} = "util-linux"
+RDEPENDS:${PN} = "bash util-linux"
 
 # While systemd, we need screen to control anaconda-init first boot
 RDEPENDS:${PN} += " \
