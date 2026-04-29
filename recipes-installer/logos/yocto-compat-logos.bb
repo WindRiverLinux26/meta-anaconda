@@ -17,8 +17,8 @@ FILES:${PN} = "${datadir}/anaconda"
 do_install() {
     install -d ${D}/${datadir}/anaconda/boot
     install -d ${D}/${datadir}/anaconda/pixmaps
-    install -m 0755 sidebar-logo.png ${D}${datadir}/anaconda/pixmaps
-    install -m 0755 topbar-bg.png ${D}${datadir}/anaconda/pixmaps
+    install -m 0644 sidebar-logo.png ${D}${datadir}/anaconda/pixmaps
+    install -m 0644 topbar-bg.png ${D}${datadir}/anaconda/pixmaps
     install -d ${D}/${datadir}/anaconda/pixmaps/rnotes/en
-    install -m 0755 banner_*.png ${D}/${datadir}/anaconda/pixmaps/rnotes/en
+    install -m 0644 banner_*.png ${D}/${datadir}/anaconda/pixmaps/rnotes/en
 }
