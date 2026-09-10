@@ -140,7 +140,7 @@ Building the target installer
            $ echo 'PACKAGE_CLASSES = "package_rpm"' >> conf/local.conf
            $ echo 'VIRTUAL-RUNTIME_init_manager = "systemd"' >> conf/local.conf
            $ echo 'DISTRO_FEATURES:append = " systemd"' >> conf/local.conf
-           $ echo 'DISTRO_FEATURES_BACKFILL_CONSIDERED:append = " sysvinit"' >> conf/local.conf
+           $ echo 'DISTRO_FEATURES_OPTED_OUT:append = " sysvinit"' >> conf/local.conf
 
            Edit conf/bblayers.conf to include other layers
            BBLAYERS ?= " \

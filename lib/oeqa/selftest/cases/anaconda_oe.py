@@ -20,7 +20,7 @@ class TestAnacondaOE(OESelftestTestCase):
         features += 'DISTRO_FEATURES:append = " systemd"\n'
         features += 'DISTRO_FEATURES:append = " pam"\n'
         features += 'DISTRO_FEATURES:append = " ldconfig"\n'
-        features += 'DISTRO_FEATURES_BACKFILL_CONSIDERED:append = " sysvinit"\n'
+        features += 'DISTRO_FEATURES_OPTED_OUT:append = " sysvinit"\n'
         self.write_config(features)
         self.logger.info('local.conf:\n%s' % features)
 
